@@ -1,0 +1,51 @@
+// function getBMI(height, weight) {
+//     return weight / (height ** 2)
+// }
+
+
+// const getBMI = (height, weight) => {
+//     let heightSquared = height * height
+//     return weight / heightSquared
+// }
+
+const getBMI = (height, weight) => weight / (height ** 2)
+
+
+let myBMI = getBMI(1.82, 80)
+
+
+console.log(myBMI)
+
+//create your own object with multiple properties
+//make sure some are multiple values
+//add some functions
+//write a function to print out all names/values using for..in
+
+const myMountainBike = {
+    make: 'Trek',
+    model: 'Remedy',
+    year: '2019',
+    'suspension-travel': { front: '160mm', rear: '150mm' },
+    terrain: ['cross country', 'downhill', 'enduro'],
+    loop: function () { let t = ''; for (terr of this.terrain) { t += `${terr}, ` } return t },
+    description: function () { return `My bike is a ${this.make} ${this.model} manufactured in ${this.year}. It has ${this['suspension-travel'].front} travel in the front and ${this['suspension-travel'].rear} travel in the rear. It's good for ${this.loop()}and normal road riding` }
+}
+
+console.log(myMountainBike.description())
+
+// let terrain = ['cross country', 'downhill', 'enduro']
+
+// let loop = function () {
+//     let t = ''
+//     for (let terr of terrain) {
+//         t += `${terr}, `
+//     }
+//     return t
+// }
+
+// console.log(loop())
+// function User(nameValue, lastNameValue, age) {
+//     this.firstname = nameValue;
+//     this.lastname = lastNameValue;
+//     this.age = age; 
+// }
