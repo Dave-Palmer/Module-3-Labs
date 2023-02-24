@@ -26,3 +26,22 @@ const myFunction = function (a, b) {
 // }
 
 console.log(myFunction({ x: 'a', y: 'b', z: undefined }, 'a'))
+
+function multiply(arr, n) {
+    if (n <= 0) {
+        return 1;
+    } else {
+        return multiply(arr, n - 1) * arr[n - 1];
+    }
+}
+// function multiply(arr, n) {
+//     let product = 1;
+//     for (let i = 0; i < n; i++) {
+//         product *= arr[i];
+//     }
+//     return product;
+// }
+
+let myArray = ['3', '4', '5', '6', '7']
+
+console.log(multiply(myArray, 3))
