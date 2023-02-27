@@ -1,16 +1,16 @@
-// const productBike = {
-//     name: 'remedy 8',
-//     make: 'trek',
-//     year: 2023,
-//     price: 3000,
-//     gst: 15,
-//     summerDiscount: 20,
-//     valueOf() {
-//         return this.price + (this.price * (this.gst / 100) - (this.price * this.summerDiscount / 100))
-//     }
-// }
+const productBike = {
+    name: 'remedy 8',
+    make: 'trek',
+    year: 2023,
+    price: 3000,
+    gst: 15,
+    summerDiscount: 20,
+    valueOf() {
+        return this.price + (this.price * (this.gst / 100) - (this.price * this.summerDiscount / 100))
+    }
+}
 
-// console.log(productBike.valueOf())
+console.log(productBike.valueOf())
 
 let citiesArray = ['Auckland', 'Hamilton', 'Tauranga', 'Wellington', 'Nelson']
 let moreCities = ['Christchurch', 'Dunedin', 'Invercargill', 'Queenstown']
@@ -44,3 +44,26 @@ people.sort((p1, p2) => {
 
 console.log(people)
 
+const plantNames = new Map();
+plantNames.set('Blueberry', 'Vaccinium');
+plantNames.set('Daylily', 'Hemerocallis');
+plantNames.set('Foxglove', 'Digitalis');
+plantNames.set('Lavender', 'Lavandula');
+
+plantNames.set('Turmeric', 'Curcuma Longa')
+
+console.log(plantNames.has('Blueberry'))
+
+for (let [plant, latin] of plantNames) {
+    console.log(`The plant's commmon name is ${plant} and the latin name is ${latin} `)
+}
+
+console.log("The value of Lavender is" + " " + plantNames.get('Lavender') + "\n")
+
+console.log([...plantNames.keys()])
+console.log(Array.from(plantNames.keys()))
+
+const plantObject = Object.fromEntries(plantNames.entries()) //converts a map to an object
+console.log(plantObject)
+
+const plantMap = new Map(Object.entries(plantObject)) //converts an object to a map

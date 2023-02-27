@@ -268,3 +268,145 @@ const latestBook = () => {
 }
 
 console.log(latestBook())
+
+// 8. The following code creates a new Map object for storing names beginning with A, B, or C with their phone numbers.
+
+const phoneBookABC = new Map() //an empty map to begin with
+phoneBookABC.set('Annabelle', '0412312343')
+phoneBookABC.set('Barry', '0433221117')
+phoneBookABC.set('Caroline', '0455221182')
+
+// a) Create a new phoneBookDEF Map to store names beginning with D, E or F
+
+const phoneBookDEF = new Map()
+// b) Initialise the contents of phoneBookDEF by passing in an array of keys/values
+phoneBookDEF.set('Dave', '021123456')
+phoneBookDEF.set('Ezra', '021987654')
+phoneBookDEF.set('Freddy', '021456789')
+
+// c) Update the phone number for Caroline
+phoneBookABC.set('Caroline', '0512398711')
+// d) Write a function printPhoneBook(contacts) that prints the names and phone
+// numbers in the given Map
+const printPhoneBook = (contacts) => {
+    for (let contact of contacts) {
+        console.log(contact)
+    }
+}
+printPhoneBook(phoneBookDEF)
+// e) Combine the contents of the two individual Maps into a single phoneBook Map
+const phoneBookMap = new Map([...phoneBookABC, ...phoneBookDEF])
+// f) Print out the full list of names in the combined phone book
+console.log(phoneBookMap)
+
+// 9. Given the below salaries object, perform the following tasks.
+let salaries = {
+    "Timothy": 35000,
+    "David": 25000,
+    "Mary": 55000,
+    "Christina": 75000,
+    "James": 43000,
+    "Janet": 40000,
+    "Bruce": 37000,
+    "Shelly": 80000
+};
+
+// a) Write a function sumSalaries(salaries) that calculates and returns the total of all salaries
+const sumSalaries = (obj) => {
+    let totalSalaries = 0
+    for (let salary in obj) {
+        totalSalaries += obj[salary]
+    } return totalSalaries
+}
+console.log(sumSalaries(salaries))
+
+// b) Write a function topEarner(salaries) that calculates and returns the name of the person
+// earning the highest salary
+const topEarner = (obj) => {
+    let top = ""
+    let currentTop = 0;
+    for (let salary in obj) {
+        if (obj[salary] > currentTop) { top = salary; currentTop = obj[salary] }
+    } return top
+}
+console.log(topEarner(salaries))
+
+// 10. The following code uses the Date object to print the current time and the number of hours that have passed today so far. Extend the code to do the following:
+
+const today = new Date();
+console.log('Current time is ' + today.toLocaleTimeString())
+console.log(today.getHours() + ' hours have passed so far today')
+
+// a) Print the total number of minutes that have passed so far today
+
+console.log((today.getHours() * 60) + today.getMinutes() + ' minutes have passed so far today')
+
+// b) Print the total number of seconds that have passed so far today
+
+console.log(((today.getHours() * 60) * 60) + today.getSeconds() + ' seconds have passed so far today')
+
+// c) Calculate and print your age as: 'I am x years, y months and z days old'
+const dob = new Date("1992-04-22")
+
+const dobYear = dob.getYear();
+let dobMonth = dob.getMonth();
+let dobDate = dob.getDate();
+
+let currentYear = today.getYear();
+let currentMonth = today.getMonth();
+let currentDate = today.getDate();
+
+//declare a variable to collect the age in year, month, and days  
+let age = {};
+let ageString = "";
+
+let yearAge = null
+//get years  
+yearAge = currentYear - dobYear;
+//get months  
+let monthAge = null
+if (currentMonth >= dobMonth)
+//get months when current month is greater  
+{ monthAge = currentMonth - dobMonth }
+else {
+    yearAge--;
+    monthAge = 12 + currentMonth - dobMonth;
+}
+
+let dateAge = null
+//get days  
+if (currentDate >= dobDate)
+//get days when the current date is greater  
+{ dateAge = currentDate - dobDate }
+else {
+    monthAge--;
+    dateAge = 31 + currentDate - dobDate;
+
+    if (monthAge < 0) {
+        monthAge = 11;
+        yearAge--;
+    }
+}
+//group the age in a single variable  
+age = {
+    years: yearAge,
+    months: monthAge,
+    days: dateAge,
+    toString() {
+        return `I am ${this.years} years, ${this.months} months, and ${this.days} days old`
+    }
+};
+console.log('' + age)
+
+// d) Write a function daysInBetween(date1, date2) which calculates and returns the amount
+// of days in between the two given dates.
+
+const daysInBetween = (date1, date2) => {
+    let dateOne = new Date(date1)
+    let dateTwo = new Date(date2)
+    let difference = dateTwo.getTime() - dateOne.getTime()
+    let totalDays = Math.ceil(difference / (1000 * 3600 * 24))
+    return `There is ${Math.abs(totalDays)} days differnce between those two dates`
+}
+
+console.log(daysInBetween('2023/02/27', '04-22-2023'))
